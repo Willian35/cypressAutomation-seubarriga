@@ -1,0 +1,32 @@
+import CreateTypeMovement from "../../../suport/createMovement/createMovement"
+describe("Criando uma movimentação para uma conta existente ",()=>{
+    it("Criando movimentação paga",()=>{
+        cy.login()
+        CreateTypeMovement.visitCreatMoviment()
+        CreateTypeMovement.selectMovement("Receita")
+        CreateTypeMovement.insertMovementDate("01/02/2023")
+        CreateTypeMovement.insertPayDay("29/01/2024")
+        CreateTypeMovement.insertDescripition("Validando campo descrição")
+        CreateTypeMovement.insertInterested("Banco")
+        CreateTypeMovement.insertValue("3.000")
+        CreateTypeMovement.selecAnAccount("ThiagoHilde")
+        CreateTypeMovement.chooseTypeOfSituationPay()
+        CreateTypeMovement.clickSave()
+        CreateTypeMovement.validationSuccessMessage()
+    })
+
+    it("Criando movimentação pendente",()=>{
+        cy.login()
+        CreateTypeMovement.visitCreatMoviment()
+        CreateTypeMovement.selectMovement("Despesa")
+        CreateTypeMovement.insertMovementDate("01/02/2023")
+        CreateTypeMovement.insertPayDay("29/01/2024")
+        CreateTypeMovement.insertDescripition("Validando campo descrição")
+        CreateTypeMovement.insertInterested("Empresa")
+        CreateTypeMovement.insertValue("4550")
+        CreateTypeMovement.selecAnAccount("ThiagoHilde")
+        CreateTypeMovement.chooseTypeOfSituationPending()
+        CreateTypeMovement.clickSave()
+        CreateTypeMovement.validationSuccessMessage()
+    })
+})
